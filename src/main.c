@@ -141,14 +141,14 @@ int main(char* args){
 
 	uint64_t total_bytes = (uint64_t)total_sectors * TAMANHO_SETOR;
 	double total_gib = (double)total_bytes / (1024 * 1024 * 1024);
-
+	uint32_t *disk_id = (uint32_t*)&buffer[440];
 
 	printf("Disk: %.2f GiB, %llu bytes, %u sectors\n", total_gib, total_bytes, total_sectors);
 	printf("Units: sectors of 1 * %d = %d bytes\n", TAMANHO_SETOR, TAMANHO_SETOR);
 	printf("Sector size (logical/physical): %d bytes / %d bytes\n", TAMANHO_SETOR, TAMANHO_SETOR);
 	printf("I/O size (minimum/optimal): %d bytes / %d bytes\n", TAMANHO_SETOR, TAMANHO_SETOR);
 	printf("Disklabel type: dos\n"); // hardcoded para ficar igual o comando
-	printf("Disk identifier: 0x55749c7e\n\n"); //hardcoded para ficar igual o comando
+	printf("Disk identifier: 0x%8x\n\n", *disk_id);
 
 	printf("Device      Boot  Start   End       Sectors   Size    Id Type\n");
 
